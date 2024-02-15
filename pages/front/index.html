@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>to do</title>
+</head>
+<body>
+<h1>List manager</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Created date</th>
+    </tr>
+    {% for l in response_list %}
+    <tr>
+        <td>{{ l.id }}</td>
+        <td>{{ l.name }}</td>
+        <td>{{ l.created_date }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
