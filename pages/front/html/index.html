@@ -5,7 +5,15 @@
     <title>to do</title>
 </head>
 <body>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for msg in messages %}
+            <h1 align="right">{{ msg }}</h1>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
 <h1>List manager</h1>
+<a href="/add">Create list</a>
 <table>
     <tr>
         <th>Id</th>
@@ -15,8 +23,9 @@
     {% for l in response_list %}
     <tr>
         <td>{{ l.id }}</td>
-        <td>{{ l.name }}</td>
+        <td><a href="/{{ l.id }}">{{ l.name }}</a></td>
         <td>{{ l.created_date }}</td>
+        <td><a href="/delete/{{ l.id }}">Delete</a></td>
     </tr>
     {% endfor %}
 </table>

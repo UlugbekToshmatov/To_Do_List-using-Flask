@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>to do</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <h1 align="right">{{ msg }}</h1>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="/task/add/{{ list_id }}" method="post">
+        <input type="text" name="name" placeholder="Enter name for task" autocomplete="off">
+        <input type="submit" value="Create">
+    </form>
+</body>
+</html>

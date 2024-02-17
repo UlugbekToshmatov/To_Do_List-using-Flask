@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>to do</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <h1 align="right">{{ msg }}</h1>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <a href="/{{ task.list_id }}">Back</a>
+    <form action="/task/update/{{ task.id }}" method="post">
+        <input type="text" name="name" value="{{ task.name }}">
+        <input type="text" name="notes"
+               {% if task.notes %}
+                    value="{{ task.notes }}"
+               {% else %}
+                    value=""
+               {% endif %}>
+        <input type="text" name="priority"
+               {% if task.priority %}
+                    value="{{ task.priority }}"
+               {% else %}
+                    value=""
+               {% endif %}>
+        <input type="text" name="due_date"
+               {% if task.due_date %}
+                    value="{{ task.due_date }}"
+               {% else %}
+                    value=""
+               {% endif %}>
+        <input type="text" name="completed"
+               {% if task.completed %}
+                    value="{{ task.completed }}"
+               {% else %}
+                    value=""
+               {% endif %}>
+        <input type="submit" value="Update">
+    </form>
+</body>
+</html>

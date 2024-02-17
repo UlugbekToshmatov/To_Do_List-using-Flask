@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>to do</title>
+</head>
+
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <h1 align="right">{{ msg }}</h1>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <a href="/">Home</a>
+    <h1>List details</h1>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Created date</th>
+        </tr>
+        <tr>
+            <td>{{ response['id'] }}</td>
+            <td>{{ response['name'] }}</td>
+            <td>{{ response['created_date'] }}</td>
+        </tr>
+    </table>
+    <a href="/update/{{ response['id'] }}">Update</a>
+    <a href="/delete/{{ response['id'] }}">Delete</a>
+    <br>
+    <br>
+    <ul>
+        {% for task in tasks %}
+        <li>ID: {{ task.id }}</li>
+        <li>Name: {{ task['name'] }}</li>
+        <li>Notes: {{ task['notes'] }}</li>
+        <li>Priority: {{ task['priority'] }}</li>
+        <li>Due date: {{ task['due_date'] }}</li>
+        <li>Completed: {{ task['completed'] }}</li>
+        <li>Created date: {{ task['created_date'] }}</li>
+        <li>List ID: {{ task['list_id'] }}</li>
+        <a href="/task/update/{{ task['id'] }}">Update </a><a href="/task/delete/{{ task['list_id'] }}/{{ task['id'] }}">Delete</a>
+        <br>
+        <br>
+        {% endfor %}
+    </ul>
+    <a href="/task/add/{{ response['id'] }}">Add task</a>
+</body>
+</html>

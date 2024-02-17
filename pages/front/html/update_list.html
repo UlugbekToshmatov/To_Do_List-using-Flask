@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>to do</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <h1 align="right">{{ msg }}</h1>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <a href="/{{ response['id'] }}">Back</a>
+    <h1>List details</h1>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Created date</th>
+        </tr>
+        <tr>
+            <td>{{ response['id'] }}</td>
+            <td>{{ response['name'] }}</td>
+            <td>{{ response['created_date'] }}</td>
+        </tr>
+    </table>
+    <form action="/update/{{ response['id'] }}" method="post">
+        <input type="text" name="name" value="{{ response['name'] }}">
+        <input type="submit" value="Update">
+    </form>
+    <a href="/delete/{{ response['id'] }}">Delete</a>
+</body>
+</html>
