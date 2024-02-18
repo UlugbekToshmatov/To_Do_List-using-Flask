@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS Lists
+(
+    id              BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name            VARCHAR(50) NOT NULL,
+    created_date    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    modified_date   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS Tasks
+(
+    id              BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name            VARCHAR(50) NOT NULL,
+    name            TEXT DEFAULT NULL,
+    priority        VARCHAR(50) DEFAULT NULL CHECK ( priority IN ('LOW', 'MEDIUM', 'HIGH')),
+    due_date        DATE DEFAULT NULL,
+    completed       BOOLEAN DEFAULT FALSE,
+    created_date    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    modified_date   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    list_id         BIGINT NOT NULL,
+    FOREIGN KEY (list_id) REFERENCES Lists(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
