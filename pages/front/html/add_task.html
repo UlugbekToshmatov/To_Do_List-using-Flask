@@ -12,6 +12,7 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
+    <a href="/{{ list_id }}">Back</a>
     <form action="/task/add/{{ list_id }}" method="post">
         <input type="text" name="name" placeholder="Enter name for task" autocomplete="off">
         <input type="submit" value="Create">

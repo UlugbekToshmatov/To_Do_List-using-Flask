@@ -38,7 +38,7 @@
         <li>Notes: {{ task['notes'] }}</li>
         <li>Priority: {{ task['priority'] }}</li>
         <li>Due date: {{ task['due_date'] }}</li>
-        <li>Completed: {{ task['completed'] }}</li>
+        <li>Completed: {{ task['completed'] }}<input type="checkbox" disabled {% if task.completed %} checked {%  endif %}></li>
         <li>Created date: {{ task['created_date'] }}</li>
         <li>List ID: {{ task['list_id'] }}</li>
         <a href="/task/update/{{ task['id'] }}">Update </a><a href="/task/delete/{{ task['list_id'] }}/{{ task['id'] }}">Delete</a>

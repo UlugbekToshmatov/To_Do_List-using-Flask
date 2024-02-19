@@ -12,13 +12,13 @@ def get_update_query(task_id, form):
         # name cannot be empty
         raise RuntimeError
     if form['notes']:
-        update_query += f"notes='{form['notes']}',"
+        update_query += f" notes='{form['notes']}',"
     if form['priority']:
-        update_query += f"priority='{form['priority']}',"
+        update_query += f" priority='{form['priority']}',"
     if form['due_date']:
-        update_query += f"due_date={date.fromisoformat(form['due_date'])},"
+        update_query += f" due_date={date.fromisoformat(form['due_date'])},"
     if form['completed']:
-        update_query += f"completed={bool(form['completed'])},"
+        update_query += f" completed={bool(int(form['completed']))},"
 
     # leave off the last comma in the query acquired and add the 'WHERE' clause to it
     update_query = update_query[:-1] + f" WHERE id={task_id}"

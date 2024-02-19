@@ -14,31 +14,40 @@
     {% endwith %}
     <a href="/{{ task.list_id }}">Back</a>
     <form action="/task/update/{{ task.id }}" method="post">
-        <input type="text" name="name" value="{{ task.name }}">
-        <input type="text" name="notes"
+        <label for="name">Name: </label><br>
+        <input type="text" id="name" name="name" value="{{ task.name }}">
+        <br>
+        <br>
+        <label for="notes">Notes: </label><br>
+        <input type="text" id="notes" name="notes"
                {% if task.notes %}
                     value="{{ task.notes }}"
                {% else %}
                     value=""
                {% endif %}>
-        <input type="text" name="priority"
-               {% if task.priority %}
-                    value="{{ task.priority }}"
-               {% else %}
-                    value=""
-               {% endif %}>
-        <input type="text" name="due_date"
-               {% if task.due_date %}
-                    value="{{ task.due_date }}"
-               {% else %}
-                    value=""
-               {% endif %}>
-        <input type="text" name="completed"
-               {% if task.completed %}
-                    value="{{ task.completed }}"
-               {% else %}
-                    value=""
-               {% endif %}>
+        <br>
+        <br>
+        <label for="priority">Priority: </label><br>
+        <input type="text" id="priority" name="priority" placeholder="{{ task.priority }}" ondrop="LOW">
+        <br>
+        <br>
+        <label for="due_date">Due date: </label><br>
+        <input type="text" id="due_date" name="due_date" placeholder="{{ task.due_date }}">
+        <br>
+        <br>
+        <label for="checkbox">Completed: </label>
+        <input type="checkbox" id="checkbox" value="1" name="completed"
+        {% if task.completed %} checked {%  endif %}>
+        <input type="hidden" id="hidden" value="0" name="completed">
+        <script>
+            form.addEventListener('submit', () => {
+                if(document.getElementById("checkbox").checked) {
+                    document.getElementById("hidden").disabled = true;
+                }
+            }
+        </script>
+        <br>
+        <br>
         <input type="submit" value="Update">
     </form>
 </body>
