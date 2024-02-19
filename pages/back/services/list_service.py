@@ -13,6 +13,9 @@ class ListService:
 
         return self.list_repository.get_by_id(list_id)
 
+    def get_lists_except_for(self, list_id):
+        return self.list_repository.get_lists_except_for(list_id)
+
     def create_list(self, name) -> bool:
         if not name:
             raise RuntimeError

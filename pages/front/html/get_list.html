@@ -15,35 +15,44 @@
     {% endwith %}
     <a href="/">Home</a>
     <h1>List details</h1>
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Created date</th>
-        </tr>
-        <tr>
-            <td>{{ response['id'] }}</td>
-            <td>{{ response['name'] }}</td>
-            <td>{{ response['created_date'] }}</td>
-        </tr>
-    </table>
+    <ul>
+        <li><h2>ID: {{ response['id'] }}</h2></li>
+        <li><h2>Name: {{ response['name'] }}</h2></li>
+        <li><h2>Created date: {{ response['created_date'] }}</h2></li>
+    </ul>
     <a href="/update/{{ response['id'] }}">Update</a>
     <a href="/delete/{{ response['id'] }}">Delete</a>
     <br>
     <br>
+    {% if tasks|length > 0 %}
+    <br>
+    <h2>Tasks</h2>
+    {% else %}
+    <h2>No tasks in this list</h2>
+    {% endif %}
     <ul>
         {% for task in tasks %}
-        <li>ID: {{ task.id }}</li>
-        <li>Name: {{ task['name'] }}</li>
-        <li>Notes: {{ task['notes'] }}</li>
-        <li>Priority: {{ task['priority'] }}</li>
-        <li>Due date: {{ task['due_date'] }}</li>
-        <li>Completed: {{ task['completed'] }}<input type="checkbox" disabled {% if task.completed %} checked {%  endif %}></li>
-        <li>Created date: {{ task['created_date'] }}</li>
-        <li>List ID: {{ task['list_id'] }}</li>
-        <a href="/task/update/{{ task['id'] }}">Update </a><a href="/task/delete/{{ task['list_id'] }}/{{ task['id'] }}">Delete</a>
-        <br>
-        <br>
+            <form action="/task/move/{{ task.list_id }}/{{ task.id }}" method="post">
+              <label for="lists">Choose a list to move this task to:</label>
+              <select name="list_id" id="lists">
+                  {% for l in lists %}
+                    <option value="{{ l.id }}">{{ l.name }}</option>
+                  {% endfor %}
+              </select>
+              <input type="submit" value="Move">
+            </form>
+            <li>ID: {{ task.id }}</li>
+            <li>Name: {{ task['name'] }}</li>
+            <li>Notes: {{ task['notes'] }}</li>
+            <li>Priority: {{ task['priority'] }}</li>
+            <li>Due date: {{ task['due_date'] }}</li>
+            <li>Completed: {{ task['completed'] }}<input type="checkbox" disabled {% if task.completed %} checked {%  endif %}></li>
+            <li>Created date: {{ task['created_date'] }}</li>
+            <li>List ID: {{ task['list_id'] }}</li>
+            <a href="/task/update/{{ task['id'] }}">Update</a>
+            <a href="/task/delete/{{ task['list_id'] }}/{{ task['id'] }}">Delete</a>
+            <br>
+            <br>
         {% endfor %}
     </ul>
     <a href="/task/add/{{ response['id'] }}">Add task</a>

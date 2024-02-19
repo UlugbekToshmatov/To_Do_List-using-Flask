@@ -16,8 +16,9 @@ def index():
 @list_bp.route("/<int:list_id>")
 def get_by_id(list_id):
     response = list_service.get_by_id(list_id)
+    lists = list_service.get_lists_except_for(list_id)
     tasks = task_service.get_all_by_list_id(list_id)
-    return render_template("get_list.html", response=response, tasks=tasks)
+    return render_template("get_list.html", response=response, lists=lists, tasks=tasks)
 
 
 @list_bp.route("/add", methods=['POST', 'GET'])

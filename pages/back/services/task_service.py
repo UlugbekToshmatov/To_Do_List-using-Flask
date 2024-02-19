@@ -61,7 +61,7 @@ class TaskService:
         return self.task_repository.delete_by_id(task_id)
 
     def move_to_another_list(self, list_id, task_id):
-        if self.list_repository.exists_by_id(list_id) is False or self.task_repository.exists_by_id(task_id):
+        if not self.list_repository.exists_by_id(list_id) or not self.task_repository.exists_by_id(task_id):
             raise RuntimeError
 
         return self.task_repository.move_to_list(list_id, task_id)

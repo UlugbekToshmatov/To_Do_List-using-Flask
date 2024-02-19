@@ -42,11 +42,12 @@ def delete_by_id(list_id, task_id):
     return redirect(url_for("list_bp.get_by_id", list_id=list_id))
 
 
-@task_bp.route("/move/<int:list_id>/<int:task_id>")
-def move_task_to_list(list_id, task_id):
+@task_bp.route("/move/<int:task_list_id>/<int:task_id>", methods=['POST'])
+def move_task_to_list(task_list_id, task_id):
+    list_id = int(request.form['list_id'])
     moved = task_service.move_to_another_list(list_id, task_id)
     if moved:
         flash("Task moved successfully to another list", "info")
     else:
         flash("Something went wrong. Please, try again.", "error")
-    return redirect(url_for("list_bp.get_by_id", list_id=list_id))
+    return redirect(url_for("list_bp.get_by_id", list_id=task_list_id))

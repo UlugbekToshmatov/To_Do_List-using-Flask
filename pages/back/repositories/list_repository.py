@@ -47,6 +47,28 @@ class ListRepository:
         # finally:
         #     self.connection.close()
 
+    def get_lists_except_for(self, list_id):
+        select_except_for_query = f"SELECT * FROM Lists WHERE id!={list_id}"
+        result_set = []
+        try:
+            cursor = self.connection.cursor()
+            cursor.execute(select_except_for_query)
+            for entity in cursor:
+                result_set.append(
+                    ListResponse(
+                        id=entity[0],
+                        name=entity[1],
+                        created_date=entity[2]
+                    )
+                )
+
+            return result_set
+        except Exception as e:
+            logging.exception(e)
+            return None
+        # finally:
+        #     self.connection.close()
+
     def create_list(self, name):
         insert_query = f"INSERT INTO Lists (name) VALUE ('{name}')"
         try:
@@ -98,6 +120,6 @@ class ListRepository:
             return quantity > 0
         except Exception as e:
             logging.exception(e)
-            return None
+            pass
         # finally:
             # self.connection.close()

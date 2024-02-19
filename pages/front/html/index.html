@@ -8,7 +8,7 @@
 {% with messages = get_flashed_messages() %}
     {% if messages %}
         {% for msg in messages %}
-            <h1 align="right">{{ msg }}</h1>
+            <h4 align="right">{{ msg }}</h4>
         {% endfor %}
     {% endif %}
 {% endwith %}
@@ -16,16 +16,16 @@
 <a href="/add">Create list</a>
 <table>
     <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Created date</th>
+        <th><h2>Id</h2></th>
+        <th><h2>Name</h2></th>
+        <th><h2>Created date</h2></th>
     </tr>
     {% for l in response_list %}
     <tr>
-        <td>{{ l.id }}</td>
-        <td><a href="/{{ l.id }}">{{ l.name }}</a></td>
-        <td>{{ l.created_date }}</td>
-        <td><a href="/delete/{{ l.id }}">Delete</a></td>
+        <td><h2>{{ l.id }}</h2></td>
+        <td><h2><a href="/{{ l.id }}">{{ l.name }}</a></h2></td>
+        <td><h2>{{ l.created_date }}</h2></td>
+        <td><h4><a href="/delete/{{ l.id }}">Delete</a></h4></td>
     </tr>
     {% endfor %}
 </table>

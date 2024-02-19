@@ -6,10 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="3e4603e0-9ef5-48ea-b9bd-1809ac2a6058" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/back/controllers/list_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/back/controllers/list_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/back/controllers/task_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/back/controllers/task_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/back/repositories/list_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/back/repositories/list_repository.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/back/services/list_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/back/services/list_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/back/services/task_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/back/services/task_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/front/html/add_task.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/front/html/add_task.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/front/html/get_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/front/html/get_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/front/html/update_task.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/front/html/update_task.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/front/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/front/html/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
